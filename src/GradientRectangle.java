@@ -11,6 +11,8 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 import com.tumblr.jumblr.JumblrClient;
+import com.tumblr.jumblr.types.Photo;
+import com.tumblr.jumblr.types.PhotoPost;
 
 public class GradientRectangle {
 
@@ -42,7 +44,7 @@ public class GradientRectangle {
 					  "iXO78Jn26xcn0DjkZNFZFh1EHA8hC4VX4mX7dPDqTR02rV9EEe"
 					);
 
-	//				client
+					
 
 			for (int i = n; i < n+20; i++) {
 				int width = 1280, height = 1280;
@@ -69,9 +71,18 @@ public class GradientRectangle {
 				ig2.setPaint(rgp);
 				ig2.fillOval(640 - 200, 640 - 200, 400, 400);
 				String username = System.getProperty("user.name");
+				File file = new File("C:\\Users\\" + username + "\\Desktop\\Test", "rectangle"+ i +".png");
 
-
-				ImageIO.write(bi, "PNG", new File("C:\\Users\\" + username + "\\Desktop\\Test", "rectangle"+ i +".png"));			
+				ImageIO.write(bi, "PNG", file);
+				Photo photo = new Photo(file);
+				PhotoPost post = client.newPost("randomgradients", PhotoPost.class);
+//				post.setCaption("caption");
+//				post.setSource("image url");
+				post.addTag("computer science");
+				post.addTag("code");
+				post.addTag("art");
+				post.setPhoto(photo);
+				post.save();
 			}
 		} catch (IOException ie) {
 			ie.printStackTrace();
