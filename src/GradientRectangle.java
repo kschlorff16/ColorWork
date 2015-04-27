@@ -31,22 +31,23 @@ public class GradientRectangle {
 			File key = new File("C:/Users/" + System.getProperty("user.name") + "/Desktop/key.txt");
 
 			Scanner scanner = new Scanner(key);
-			int n = scanner.nextInt();
 			String first = scanner.next();
 			String second = scanner.next();
+			String third = scanner.next();
+			String fourth = scanner.next();
 
 			JumblrClient client = new JumblrClient(
 					  first,
 					  second
 					);
 					client.setToken(
-					  "uLk6bQQMQu5NdcQQTkGxFsP9kAcead20NCml6QvebvSy4ZAbhg",
-					  "iXO78Jn26xcn0DjkZNFZFh1EHA8hC4VX4mX7dPDqTR02rV9EEe"
+					  third,
+					  fourth
 					);
 
 					
 
-			for (int i = n; i < n+20; i++) {
+			for (int i = 0; i < 20; i++) {
 				int width = 1280, height = 1280;
 
 				// TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
@@ -76,8 +77,6 @@ public class GradientRectangle {
 				ImageIO.write(bi, "PNG", file);
 				Photo photo = new Photo(file);
 				PhotoPost post = client.newPost("randomgradients", PhotoPost.class);
-//				post.setCaption("caption");
-//				post.setSource("image url");
 				post.addTag("computer science");
 				post.addTag("code");
 				post.addTag("art");
