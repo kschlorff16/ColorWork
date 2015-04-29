@@ -45,9 +45,9 @@ public class GradientRectangle {
 					  fourth
 					);
 
-					
+			scanner.close();
 
-			for (int i = 0; i < 200; i++) {
+			for (int i = 0; i < 100; i++) {
 				int width = 1280, height = 1280;
 
 				// TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
@@ -81,7 +81,7 @@ public class GradientRectangle {
 //				post.addTag("code");
 //				post.addTag("art");
 				post.setPhoto(photo);
-				post.setState("queued");
+				post.setState("queue");
 				post.save();
 			}
 		} catch (IOException ie) {
