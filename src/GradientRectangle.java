@@ -28,7 +28,7 @@ public class GradientRectangle {
 	static public void main(String args[]) throws Exception {
 		try {
 
-			File key = new File("C:/Users/" + System.getProperty("user.name") + "/Desktop/key.txt");
+			File key = new File("C:/Users/" + System.getProperty("user.name") + "/SkyDrive/key.txt");
 
 			Scanner scanner = new Scanner(key);
 			String first = scanner.next();
@@ -47,7 +47,7 @@ public class GradientRectangle {
 
 					
 
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 200; i++) {
 				int width = 1280, height = 1280;
 
 				// TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
@@ -77,10 +77,11 @@ public class GradientRectangle {
 				ImageIO.write(bi, "PNG", file);
 				Photo photo = new Photo(file);
 				PhotoPost post = client.newPost("randomgradients", PhotoPost.class);
-				post.addTag("computer science");
-				post.addTag("code");
-				post.addTag("art");
+//				post.addTag("computer science");
+//				post.addTag("code");
+//				post.addTag("art");
 				post.setPhoto(photo);
+				post.setState("queued");
 				post.save();
 			}
 		} catch (IOException ie) {
