@@ -13,7 +13,7 @@ public class Post {
 		GradientCircle.generateCircles();
 		GradientRectangle.generateRectangles();
 		
-		File key = new File("C:/Users/" + System.getProperty("user.name") + "/SkyDrive/key.txt");
+		File key = new File("key.txt");
 
 		Scanner scanner = new Scanner(key);
 		String first = scanner.next();
