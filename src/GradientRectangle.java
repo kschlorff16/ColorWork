@@ -25,30 +25,18 @@ public class GradientRectangle {
 		return color;
 	}
 
-	static public void main(String args[]) throws Exception {
+	static public void generateRectangles() throws Exception {
 		try {
 
-			File key = new File("C:/Users/" + System.getProperty("user.name") + "/SkyDrive/key.txt");
+			int width = 1280, height = 1280;
+			int diameter = 400;
+			int radius = diameter / 2;
 
-			Scanner scanner = new Scanner(key);
-			String first = scanner.next();
-			String second = scanner.next();
-			String third = scanner.next();
-			String fourth = scanner.next();
 
-			JumblrClient client = new JumblrClient(
-					  first,
-					  second
-					);
-					client.setToken(
-					  third,
-					  fourth
-					);
 
-			scanner.close();
+			for (int i = 0; i < 50; i++) {
 
-			for (int i = 0; i < 100; i++) {
-				int width = 1280, height = 1280;
+
 
 				// TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
 				// into integer pixels
@@ -65,24 +53,17 @@ public class GradientRectangle {
 				Color c4 = randomColor();
 
 				GradientPaint gp = new GradientPaint(0,0,c1,1280, 1280,c2); 
-				GradientPaint rgp = new GradientPaint(640 - 200, 640 - 200, c3, 840, 840, c4);
+				GradientPaint rgp = new GradientPaint(width/2 - radius, height/2 - radius, c3, width/2 + radius, height/2 + radius, c4);
 
 				ig2.setPaint(gp);
 				ig2.fill(new Rectangle2D.Double(0, 0, width, height));
 				ig2.setPaint(rgp);
-				ig2.fillOval(640 - 200, 640 - 200, 400, 400);
-				String username = System.getProperty("user.name");
-				File file = new File("C:\\Users\\" + username + "\\Desktop\\Test", "rectangle"+ i +".png");
+				ig2.fillOval(width/2 - radius, height/2 - radius, diameter, diameter);
+//				String username = System.getProperty("user.name");
+				File file = new File("L:\\Test", "rectangle"+ i +".png");
 
 				ImageIO.write(bi, "PNG", file);
-				Photo photo = new Photo(file);
-				PhotoPost post = client.newPost("randomgradients", PhotoPost.class);
-//				post.addTag("computer science");
-//				post.addTag("code");
-//				post.addTag("art");
-				post.setPhoto(photo);
-				post.setState("queue");
-				post.save();
+				
 			}
 		} catch (IOException ie) {
 			ie.printStackTrace();
