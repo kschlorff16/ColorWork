@@ -24,14 +24,17 @@ public class WallpaperGenerator {
 
 
 	public static void main(String[] args) throws IOException {
-
-		int width = 1920, height = 1080;
+		System.out.println("Enter your screen's width in pixels:");
+		int width = StdIn.readInt();
+		System.out.println("Enter your screen's width in pixels:");
+		int height = StdIn.readInt();
+//		int width = 1600, height = 900;
 		int diameter = 600;
 		int radius = diameter / 2;
 
 
 
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 1; i++) {
 
 
 
@@ -56,8 +59,9 @@ public class WallpaperGenerator {
 			ig2.fill(new Rectangle2D.Double(0, 0, width, height));
 			ig2.setPaint(rgp);
 			ig2.fillOval(width/2 - radius, height/2 - radius, diameter, diameter);
-			//			String username = System.getProperty("user.name");
-			File file = new File("L:\\Test", "rectangle"+ i +".png");
+			String username = System.getProperty("user.name");
+			File file = new File("C:\\Users\\" + username + "\\Desktop\\Test\\", "rectangle"+ i +".png");
+//			File file = new File("L:\\Test", "rectangle"+ i +".png");
 
 			ImageIO.write(bi, "PNG", file);
 		}
